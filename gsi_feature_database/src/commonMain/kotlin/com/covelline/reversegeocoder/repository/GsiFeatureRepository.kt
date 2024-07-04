@@ -1,0 +1,4 @@
+package com.covelline.reversegeocoder.repository
+
+import com.covelline.reversegeocoder.data.GsiFeatureDatabase
+import com.covelline.reversegeocoder.data.GsiFeatureDatabaseBuilder

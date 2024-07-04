@@ -1,0 +1,196 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "6ee991e8ddd0d728abad3d962c039e95",
+    "entities": [
+      {
+        "tableName": "AdministrativeArea",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `prefecture` TEXT NOT NULL, `subPrefecture` TEXT, `county` TEXT, `city` TEXT, `ward` TEXT, `code` TEXT NOT NULL, `polygon` TEXT NOT NULL, `minX` REAL NOT NULL, `minY` REAL NOT NULL, `maxX` REAL NOT NULL, `maxY` REAL NOT NULL, `jarlCityWardCountryCodeId` INTEGER, FOREIGN KEY(`jarlCityWardCountryCodeId`) REFERENCES `JarlCityWardCountyCode`(`id`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "prefecture",
+            "columnName": "prefecture",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "subPrefecture",
+            "columnName": "subPrefecture",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "county",
+            "columnName": "county",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "city",
+            "columnName": "city",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "ward",
+            "columnName": "ward",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "polygon",
+            "columnName": "polygon",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "minX",
+            "columnName": "minX",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "minY",
+            "columnName": "minY",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maxX",
+            "columnName": "maxX",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "maxY",
+            "columnName": "maxY",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "jarlCityWardCountryCodeId",
+            "columnName": "jarlCityWardCountryCodeId",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_AdministrativeArea_jarlCityWardCountryCodeId",
+            "unique": false,
+            "columnNames": [
+              "jarlCityWardCountryCodeId"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_AdministrativeArea_jarlCityWardCountryCodeId` ON `${TABLE_NAME}` (`jarlCityWardCountryCodeId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "JarlCityWardCountyCode",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "jarlCityWardCountryCodeId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "JarlCityWardCountyCode",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `jccNumber` TEXT, `jcgNumber` TEXT, `kuNumber` TEXT, `prefecture` TEXT NOT NULL, `city` TEXT NOT NULL, `ward` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "jccNumber",
+            "columnName": "jccNumber",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "jcgNumber",
+            "columnName": "jcgNumber",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "kuNumber",
+            "columnName": "kuNumber",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "prefecture",
+            "columnName": "prefecture",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "city",
+            "columnName": "city",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ward",
+            "columnName": "ward",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        }
+      },
+      {
+        "tableName": "GsiMetadata",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`databaseVersion` INTEGER NOT NULL, `gisDataVersionInfo` TEXT NOT NULL, PRIMARY KEY(`databaseVersion`))",
+        "fields": [
+          {
+            "fieldPath": "databaseVersion",
+            "columnName": "databaseVersion",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "gisDataVersionInfo",
+            "columnName": "gisDataVersionInfo",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "databaseVersion"
+          ]
+        }
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6ee991e8ddd0d728abad3d962c039e95')"
+    ]
+  }
+}

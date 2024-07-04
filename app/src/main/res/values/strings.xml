@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">ReverseGeocoder</string>
+    <string name="request_permission_description">位置情報を取得するため、「正確な位置情報」または「おおよその位置情報」いずれかの許可が必要です。設定画面から、許可を設定してください。</string>
+    <string name="request_permission_open_setting_button">設定アプリを開く</string>
+    <string name="current_location_list_timestamp">最終取得日時 %1$s</string>
+    <string name="current_location_list_latitude">緯度: %1$s</string>
+    <string name="current_location_list_longitude">経度: %1$s</string>
+    <string name="current_location_list_altitude">高度: %1$s</string>
+    <string name="current_location_list_get_current_location_button">位置を取得</string>
+    <string name="current_location_list_request_background_location_button">バックグラウンドで位置情報を取得する</string>
+    <string name="current_location_list_request_background_location_description">バックグラウンドで位置情報取得を有効化します。バッテリー消費が早くなる可能性があります</string>
+    <string name="current_location_list_address">都市: %1$s</string>
+    <string name="current_location_list_title">現在位置情報</string>
+    <string name="description_current_location_screen_my_location">現在の位置座標</string>
+    <string name="description_current_location_screen_altitude">現在の標高</string>
+    <string name="current_location_list_my_location">"\n      緯度: %1$s,\n      経度: %2$s\n    "</string>
+    <string name="description_current_location_screen_city">現在の都市</string>
+    <string name="current_location_list_update_location_error_title">位置取得でエラーが発生しました</string>
+    <string name="current_location_list_screen_permission_denied_error_description">位置情報へのアクセスが許可されていませんでした。位置情報を再取得してください。</string>
+    <string name="current_location_list_update_location_api_error_description">"\n          位置情報を取得できませんでした。\n          発生したエラー: %1$s\n          再取得するか、開発者に報告をしてください。\n        "</string>
+    <string name="current_location_list_screen_update_location_text">位置情報取を得中…</string>
+    <string name="settings_title">アプリ設定</string>
+    <string name="settings_change_background_location_access_switch">バックグラウンドで位置情報取得を取得する</string>
+    <string name="settings_version_title">バージョン情報</string>
+    <string name="settings_version_application_version_title">アプリバージョン</string>
+    <string name="license_title">ライセンス</string>
+</resources>

@@ -1,0 +1,178 @@
+{
+  "sourceLanguage" : "ja",
+  "strings" : {
+    "%@\n%@\n%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@\n%2$@\n%3$@"
+          }
+        }
+      }
+    },
+    "%@: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@: %2$@"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.administrativeArea.error%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "都市情報取得に失敗しました\n%@"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.administrativeArea.myCity: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "都市: %@"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.administrativeArea.none" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "都市情報が未取得です"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.jarlCityWardCountyCode.error%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JCC取得に失敗しました\n%@"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.jarlCityWardCountyCode.none" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "JCC未取得です"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.location %@%@%@" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "緯度: %1$@\n経度: %2$@\n高度: %3$@"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.location.altitude: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "高度: %@"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.location.error%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "位置取得に失敗しました\n%@"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.location.latitude: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "緯度: %@"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.location.longitude: %@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "経度: %@"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.location.none" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "位置未取得です"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.location.timestamp%@" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "最終取得時間\n%@"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "現在位置情報"
+          }
+        }
+      }
+    },
+    "CurrentLocationListScreen.update.location" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "位置情報を更新する"
+          }
+        }
+      }
+    },
+    "settings" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

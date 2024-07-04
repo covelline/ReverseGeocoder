@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+option java_package = "com.covelline.reversegeocoder";
+option java_multiple_files = true;
+
+import "google/protobuf/timestamp.proto";
+
+message LocationData {
+  oneof updateLocationResult {
+    Location location = 1; // 緯度経度情報
+    UpdateLocationError updateLocationError = 2; // 緯度経度取得に失敗した理由
+  }
+  oneof findAdministrativeArea {
+    AdministrativeArea administrativeArea = 4; // 住所情報
+    FindAdministrativeAreaError findAdministrativeAreaError = 5; // 住所取得に失敗した理由
+  }
+  oneof findJarlCityWardCountyCode {
+    JarlCityWardCountyCode jarlCityWardCountyCode = 6; // JCC/JCG/区コード
+    FindJarlCityWardCountyCodeError findJarlCityWardCountyCodeError = 7; // JCC/JCG/区コード取得に失敗した理由
+  }
+  google.protobuf.Timestamp timestamp = 8; // 最終更新時刻 (UTCエポックからのミリ秒数)
+}
+
+message Location {
+  double latitude = 1; // 緯度
+  double longitude = 2; // 経度
+  double altitude = 3; // 高度
+}
+
+message UpdateLocationError {
+  UpdateLocationErrorReason reason = 1; // 緯度経度取得に失敗した理由
+  string message = 2; // 緯度経度取得に失敗した理由があれば
+}
+
+enum UpdateLocationErrorReason {
+  PERMISSION_DENIED = 0; // 位置情報の取得権限がない
+  API_ERROR = 1; // 位置情報の取得に失敗
+}
+
+message AdministrativeArea {
+  string prefecture = 1; // 都道府県 (必須)
+  optional string subPrefecture = 2; // 北海道の振興局名 (null許容)
+  optional string county = 3; // 郡 (null許容)
+  optional string city = 4; // 市 (null許容)
+  optional string ward = 5; // 政令指定都市の行政区名 (null許容)
+  string code = 6; // 全国地方公共団体コード
+}
+
+message FindAdministrativeAreaError {
+  FindAdministrativeAreaErrorReason reason = 1; // 住所取得に失敗した理由
+  string message = 2; // 住所取得に失敗した理由があれば
+}
+
+enum FindAdministrativeAreaErrorReason {
+  NOT_FOUND_ADMINISTRATIVE_AREA = 0; // 住所情報が見つからない
+}
+
+message JarlCityWardCountyCode {
+  string code = 1; // JCC/JCG/または区コード
+  JarlCityWardCountyCodeType type = 2; // JCC/JCG/または区コードの種別
+}
+
+enum JarlCityWardCountyCodeType {
+  JCC = 0; // JCC
+  JCG = 1; // JCG
+  Ku = 2; // 区コード
+}
+
+message FindJarlCityWardCountyCodeError {
+    FindJarlCityWardCountyCodeErrorReason reason = 1; // JCC/JCG/区コードが見つからない理由
+    string message = 2; // JCC/JCG/区コードが見つからない理由があれば
+}
+
+enum FindJarlCityWardCountyCodeErrorReason {
+  NOT_FOUND_JARL_CITY_WARD_COUNTY_CODE = 0; // JCC/JCG/区コードが見つからない
+}

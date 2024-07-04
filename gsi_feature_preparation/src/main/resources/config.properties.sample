@@ -1,0 +1,3 @@
+inputFilePath = /path/to/geojson.geojson
+awardFilePath = /path/to/award.mcsv
+outputDirectoryPath = /path/to/japan_administrative_divisions/src/main/assets

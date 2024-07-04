@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "111111111",
+    "project_id": "reverse-geocodeing-for-ham",
+    "storage_bucket": "reverse-geocodeing-for-ham.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "MOBILESDK_APP_ID",
+        "android_client_info": {
+          "package_name": "com.covelline.reversegeocoder"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "API_KEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
