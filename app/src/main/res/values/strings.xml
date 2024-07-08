@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ReverseGeocoder</string>
+    <string name="app_name">位置ナビ</string>
     <string name="request_permission_description">位置情報を取得するため、「正確な位置情報」または「おおよその位置情報」いずれかの許可が必要です。設定画面から、許可を設定してください。</string>
     <string name="request_permission_open_setting_button">設定アプリを開く</string>
     <string name="current_location_list_timestamp">最終取得日時 %1$s</string>
