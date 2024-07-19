@@ -50,8 +50,6 @@
 		24AD58BA2C480FBA00ECE791 /* LocationDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2498AABE2C34493100BFFD15 /* LocationDataStore.swift */; };
 		24AD58BB2C480FBE00ECE791 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2498AABC2C3446D700BFFD15 /* LocationData.swift */; };
 		24AD58BD2C48112B00ECE791 /* CurrentLocationListWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24AD58BC2C48112B00ECE791 /* CurrentLocationListWidget.swift */; };
-		24AD58C32C494BBE00ECE791 /* LocationUpdateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2498AAC52C34549A00BFFD15 /* LocationUpdateService.swift */; };
-		24AD58C42C494BC400ECE791 /* DatabaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2498AACB2C34DEED00BFFD15 /* DatabaseProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -462,11 +460,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24AD58C42C494BC400ECE791 /* DatabaseProvider.swift in Sources */,
 				24AD58BB2C480FBE00ECE791 /* LocationData.swift in Sources */,
 				24AD58BD2C48112B00ECE791 /* CurrentLocationListWidget.swift in Sources */,
 				24AD58AC2C480F1600ECE791 /* ReverseGeocoderWidget.swift in Sources */,
-				24AD58C32C494BBE00ECE791 /* LocationUpdateService.swift in Sources */,
 				24AD58AE2C480F1600ECE791 /* AppIntent.swift in Sources */,
 				24AD58A82C480F1600ECE791 /* ReverseGeocoderWidgetBundle.swift in Sources */,
 				24AD58BA2C480FBA00ECE791 /* LocationDataStore.swift in Sources */,
