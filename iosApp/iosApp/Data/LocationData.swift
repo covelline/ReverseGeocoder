@@ -10,6 +10,9 @@ struct LocationData: Codable {
 
 extension LocationData {
     static let defaultValue: LocationData = .init(location: .none, administrativeArea: .none, jarlCityWardCountyCode: .none, timestamp: nil)
+    
+    static let placeholder: LocationData = .init(location: .fetched(latitude: 35.680882
+                                                                           , longitude: 139.767408, altitude: 0.0), administrativeArea: .fetched(prefecture: "東京都", subPrefecture: nil, county: nil, city: nil, ward: "千代田区", code: ""), jarlCityWardCountyCode: .fetched(code: "100101", codeType: .jcc))
 }
 
 enum Location: Codable {

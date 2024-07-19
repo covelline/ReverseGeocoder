@@ -9,14 +9,14 @@ class LocationDataStore: ObservableObject {
     private init() {}
     
     private static func fileURL() throws -> URL {
-        try FileManager.default.url(for: .documentDirectory,
-                                    in: .userDomainMask,
-                                    appropriateFor: nil,
-                                    create: false)
-        .appending(path: "location_data.data")
+        let groupId = "group.com.covelline.Reversegeocoder"
+        return FileManager
+            .default
+            .containerURL(forSecurityApplicationGroupIdentifier: groupId)!
+            .appending(path: "location_data.data")
     }
     
-    func load() async throws {
+    func load() async throws -> LocationData {
         let task = Task<LocationData, Error> {
             let fileURL = try Self.fileURL()
             guard let data = try? Data(contentsOf: fileURL) else {
@@ -27,6 +27,7 @@ class LocationDataStore: ObservableObject {
         }
         let locationData = try await task.value
         self.locationData = locationData
+        return locationData
     }
     
     func save(locationData: LocationData) async throws {

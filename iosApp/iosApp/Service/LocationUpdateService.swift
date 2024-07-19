@@ -2,6 +2,7 @@ import Foundation
 import CoreLocation
 import GsiFeatureDB
 import MapKit
+import WidgetKit
 
 @MainActor
 class LocationUpdateService: NSObject {
@@ -18,27 +19,21 @@ class LocationUpdateService: NSObject {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    /// ユーザーの操作によって現在位置情報を更新する処理
-    func updateLocation(forceUpdate: Bool = false) async throws {
-        let currentAuthorizationStatus = locationManager.authorizationStatus
-        switch currentAuthorizationStatus {
-        case .denied, .restricted:
-            let locationData = LocationData(location: .error(reason: "Location.notAuthorized"), administrativeArea: .none, jarlCityWardCountyCode: .none, timestamp: Date())
-            try await locationDataStore.save(locationData: locationData)
+    /// 現在位置情報の監視を開始する
+    func updateLocation() async throws {
+        guard try await checkLocationAuthorizationStatus() else {
             return
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-            return
-        default:
-            break
         }
-        if !forceUpdate,
-           let lastLocation = locationManager.location,
+        if let lastLocation = locationManager.location,
            lastLocation.timestamp.timeIntervalSinceNow < -1800 {
-            try await updateLocationData(for: lastLocation)
-            return
+           try await updateLocationData(for: lastLocation)
         }
-        locationManager.requestLocation()
+        for try await locationUpdate in CLLocationUpdate.liveUpdates() {
+            if let location = locationUpdate.location {
+                try await updateLocationData(for: location)
+                WidgetCenter.shared.reloadAllTimelines()
+            }
+        }
     }
     
     /// 得られた位置情報を使ってリバースジオコーディングなどを行う
@@ -102,6 +97,27 @@ class LocationUpdateService: NSObject {
         return administrativeArea
     }
     
+    /// 位置情報取得許可状況をチェックする
+    /// true なら許可済
+    private func checkLocationAuthorizationStatus() async throws -> Bool {
+        let currentAuthorizationStatus = locationManager.authorizationStatus
+        switch currentAuthorizationStatus {
+        case .denied, .restricted:
+            let locationData = LocationData(location: .error(reason: "Location.notAuthorized"), administrativeArea: .none, jarlCityWardCountyCode: .none, timestamp: Date())
+            try await locationDataStore.save(locationData: locationData)
+            return false
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            return false
+        case .authorizedAlways, .authorizedWhenInUse:
+            return true
+        @unknown default:
+            // コンパイルエラー対策
+            return true
+        }
+
+    }
+    
 }
 
 extension LocationUpdateService: CLLocationManagerDelegate {
@@ -112,14 +128,9 @@ extension LocationUpdateService: CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        Task {
-            try? await updateLocationData(for:locations.last!)
-        }
-    }
-    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
         print("locationManager didFailWithError")
         print(error.localizedDescription)
     }
+    
 }

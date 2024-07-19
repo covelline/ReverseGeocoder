@@ -23,6 +23,17 @@
         }
       }
     },
+    "NSLocationAlwaysAndWhenInUseUsageDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widgetに都市名やJCCコードを表示する場合、許可をしてください。"
+          }
+        }
+      }
+    },
     "NSLocationWhenInUseUsageDescription" : {
       "comment" : "Privacy - Location When In Use Usage Description",
       "localizations" : {

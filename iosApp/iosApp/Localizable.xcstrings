@@ -1,16 +1,6 @@
 {
   "sourceLanguage" : "ja",
   "strings" : {
-    "%@\n%@\n%@" : {
-      "localizations" : {
-        "ja" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@\n%2$@\n%3$@"
-          }
-        }
-      }
-    },
     "%@: %@" : {
       "localizations" : {
         "ja" : {
@@ -154,6 +144,7 @@
       }
     },
     "CurrentLocationListScreen.update.location" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {
@@ -163,7 +154,11 @@
         }
       }
     },
+    "Hello, World!" : {
+
+    },
     "settings" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ja" : {
           "stringUnit" : {

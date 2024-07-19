@@ -10,7 +10,7 @@ struct iOSApp: App {
             MainNavigation(locationData: $locationDataStore.locationData)
                 .task {
                     do {
-                        try await locationDataStore.load()
+                        let _ = try await locationDataStore.load()
                     } catch {
                         fatalError(error.localizedDescription)
                     }
