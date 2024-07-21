@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="gsi_feature_database-jvm">
-    <output-path>$PROJECT_DIR$/gsi_feature_database/build/libs</output-path>
-    <root id="archive" name="gsi_feature_database-jvm.jar">
-      <element id="module-output" name="ReverseGeocoder.gsi_feature_database.jvmMain" />
-    </root>
-  </artifact>
-</component>

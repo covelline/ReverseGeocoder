@@ -26,7 +26,7 @@ android {
         applicationId = "com.covelline.reversegeocoder"
         minSdk = 30
         targetSdk = 35
-        versionCode = 1
+        versionCode = 2
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -37,7 +37,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -192,14 +192,16 @@ val ktFmtFormat = tasks.register<KtfmtFormatTask>("ktFmtFormat") {
 
 licenseReport {
     renderers = arrayOf(SimpleHtmlReportRenderer("licenses.html"))
+    allowedLicensesFile = project.layout.projectDirectory.file("config/allowed-licenses.json").asFile
+    projects = arrayOf(project, project(":gsi_feature_database"))
 }
 
 // いくつかのファイルが生成されるので、index.json以外は消す
 val cleanLicenseReport = tasks.register("cleanLicenseReport", DefaultTask::class) {
-    val generateTask = tasks.named("generateLicenseReport", ReportTask::class)
-    dependsOn(generateTask)
+    dependsOn(tasks.generateLicenseReport)
+    dependsOn(tasks.checkLicense)
     doLast {
-        val output = generateTask.get().outputFolder
+        val output = tasks.generateLicenseReport.get().outputFolder
         output.listFiles()?.forEach { file ->
             if (file.name != "licenses.html") {
                 if (file.isDirectory) {
