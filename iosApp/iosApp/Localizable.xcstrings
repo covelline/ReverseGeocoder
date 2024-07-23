@@ -154,7 +154,7 @@
         }
       }
     },
-    "Hello, World!" : {
+    "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-N03-2024.html" : {
 
     },
     "settings" : {
@@ -164,6 +164,59 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "設定"
+          }
+        }
+      }
+    },
+    "SettingsScreen.license" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ライセンス"
+          }
+        }
+      }
+    },
+    "SettingsScreen.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "設定"
+          }
+        }
+      }
+    },
+    "SettingsScreen.version.appVersion" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "アプリバージョン"
+          }
+        }
+      }
+    },
+    "SettingsScreen.version.gsiVersion" : {
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "国土交通省国土数値情報ダウンロードサイト"
+          }
+        }
+      }
+    },
+    "SettingsScreen.version.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バージョン情報"
           }
         }
       }

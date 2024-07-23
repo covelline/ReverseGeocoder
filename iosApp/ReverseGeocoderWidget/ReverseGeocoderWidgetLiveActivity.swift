@@ -1,6 +1,6 @@
 import ActivityKit
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 struct ReverseGeocoderWidgetAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
@@ -49,24 +49,24 @@ struct ReverseGeocoderWidgetLiveActivity: Widget {
     }
 }
 
-extension ReverseGeocoderWidgetAttributes {
-    fileprivate static var preview: ReverseGeocoderWidgetAttributes {
+private extension ReverseGeocoderWidgetAttributes {
+    static var preview: ReverseGeocoderWidgetAttributes {
         ReverseGeocoderWidgetAttributes(name: "World")
     }
 }
 
-extension ReverseGeocoderWidgetAttributes.ContentState {
-    fileprivate static var smiley: ReverseGeocoderWidgetAttributes.ContentState {
+private extension ReverseGeocoderWidgetAttributes.ContentState {
+    static var smiley: ReverseGeocoderWidgetAttributes.ContentState {
         ReverseGeocoderWidgetAttributes.ContentState(emoji: "😀")
-     }
-     
-     fileprivate static var starEyes: ReverseGeocoderWidgetAttributes.ContentState {
-         ReverseGeocoderWidgetAttributes.ContentState(emoji: "🤩")
-     }
+    }
+
+    static var starEyes: ReverseGeocoderWidgetAttributes.ContentState {
+        ReverseGeocoderWidgetAttributes.ContentState(emoji: "🤩")
+    }
 }
 
 #Preview("Notification", as: .content, using: ReverseGeocoderWidgetAttributes.preview) {
-   ReverseGeocoderWidgetLiveActivity()
+    ReverseGeocoderWidgetLiveActivity()
 } contentStates: {
     ReverseGeocoderWidgetAttributes.ContentState.smiley
     ReverseGeocoderWidgetAttributes.ContentState.starEyes

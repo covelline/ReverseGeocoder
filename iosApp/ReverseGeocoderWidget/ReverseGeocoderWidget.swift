@@ -1,16 +1,16 @@
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
-fileprivate struct Provider: AppIntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
+private struct Provider: AppIntentTimelineProvider {
+    func placeholder(in _: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: ConfigurationAppIntent())
     }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
+    func snapshot(for configuration: ConfigurationAppIntent, in _: Context) async -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: configuration)
     }
-    
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
+
+    func timeline(for configuration: ConfigurationAppIntent, in _: Context) async -> Timeline<SimpleEntry> {
         var entries: [SimpleEntry] = []
 
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
@@ -30,7 +30,7 @@ struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationAppIntent
 }
 
-struct ReverseGeocoderWidgetEntryView : View {
+struct ReverseGeocoderWidgetEntryView: View {
     fileprivate var entry: Provider.Entry
 
     var body: some View {
@@ -55,14 +55,14 @@ struct ReverseGeocoderWidget: Widget {
     }
 }
 
-extension ConfigurationAppIntent {
-    fileprivate static var smiley: ConfigurationAppIntent {
+private extension ConfigurationAppIntent {
+    static var smiley: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
         intent.favoriteEmoji = "😀"
         return intent
     }
-    
-    fileprivate static var starEyes: ConfigurationAppIntent {
+
+    static var starEyes: ConfigurationAppIntent {
         let intent = ConfigurationAppIntent()
         intent.favoriteEmoji = "🤩"
         return intent
