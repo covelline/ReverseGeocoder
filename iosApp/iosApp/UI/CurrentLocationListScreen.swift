@@ -12,33 +12,33 @@ struct CurrentLocationListScreen: View {
                         alignment: .leading
                     ) {
                         switch locationData.administrativeArea {
-                        case .error(let reason):
+                        case let .error(reason):
                             Text("CurrentLocationListScreen.administrativeArea.error\(reason)")
                         case .none:
                             Text("CurrentLocationListScreen.administrativeArea.none")
-                        case .fetched(let prefecture, let subPrefecture, let county, let city, let ward, _):
+                        case let .fetched(prefecture, subPrefecture, county, city, ward, _):
                             let myCity = [
                                 prefecture,
                                 subPrefecture,
                                 county,
                                 city,
-                                ward
+                                ward,
                             ]
-                                .compactMap { $0 }
-                                .joined()
+                            .compactMap { $0 }
+                            .joined()
                             Text("CurrentLocationListScreen.administrativeArea.myCity: \(myCity)")
                         }
                         switch locationData.jarlCityWardCountyCode {
-                        case .error(let reason):
+                        case let .error(reason):
                             Text("CurrentLocationListScreen.jarlCityWardCountyCode.error\(reason)")
                         case .none:
                             Text("CurrentLocationListScreen.jarlCityWardCountyCode.none")
-                        case .fetched(let code, let codeType):
+                        case let .fetched(code, codeType):
                             let codeTypeName = switch codeType {
-                                case .jcc, .ku:
-                                    "JCC"
-                                case .jcg:
-                                    "JCG"
+                            case .jcc, .ku:
+                                "JCC"
+                            case .jcg:
+                                "JCG"
                             }
                             Text("\(codeTypeName): \(code)")
                         }
@@ -50,11 +50,11 @@ struct CurrentLocationListScreen: View {
                         alignment: .leading
                     ) {
                         switch locationData.location {
-                        case .error(let reason):
+                        case let .error(reason):
                             Text("CurrentLocationListScreen.location.error\(reason)")
                         case .none:
                             Text("CurrentLocationListScreen.location.none")
-                        case .fetched(let latitude, let longitude, let altitude):
+                        case let .fetched(latitude, longitude, altitude):
                             Text("CurrentLocationListScreen.location.latitude: \(String(format: "%.3f", latitude))")
                             Text("CurrentLocationListScreen.location.longitude: \(String(format: "%.3f", longitude))")
                             Text("CurrentLocationListScreen.location.altitude: \(String(format: "%.2f", altitude))")
@@ -94,7 +94,6 @@ struct CurrentLocationListScreen: View {
             }
         }
     }
-
 }
 
 #Preview {
@@ -106,5 +105,3 @@ struct CurrentLocationListScreen: View {
 #Preview {
     CurrentLocationListScreen(locationData: .constant(.init(location: .fetched(latitude: 35.681236, longitude: 139.767125, altitude: 0.0), administrativeArea: .fetched(prefecture: "東京都", subPrefecture: nil, county: nil, city: "千代田区", ward: nil, code: ""), jarlCityWardCountyCode: .fetched(code: "11011", codeType: .jcc), timestamp: Date())))
 }
-
-

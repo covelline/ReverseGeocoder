@@ -1,0 +1,72 @@
+disabled_rules:
+  - trailing_comma
+  - opening_brace
+  - todo
+
+line_length:
+  - 200
+  - 200
+
+type_name:
+  excluded:
+    - feather
+    - ".+UseCase$" # UseCaseは名前が長くなりがちなので除外
+
+identifier_name:
+  min_length:
+    warning: 2
+    error: 2
+  excluded:
+    - i
+    - id
+    - n
+    - x
+    - y
+    - ".+UseCase$" # UseCaseは名前が長くなりがちなので除外
+
+nesting:
+  type_level: 3
+
+excluded:
+  - feather/Generated
+  - vendor/
+  - "**/.build/*"
+
+custom_rules:
+  prefer_app_logger:
+    included: ".*\\.swift"
+    name: "prefer AppLogger"
+    regex: "((\\bprint)|(Swift\\.print))\\s*\\("
+    message: "printではなくAppLoggerを使ってください"
+    severity: warning
+  no_oslog:
+    included: ".*\\.swift"
+    name: "No OSLog"
+    regex: "import OSLog"
+    message: "OSLogではなくAppLoggerを使ってください"
+    severity: error
+  no_viewmodel_type:
+    name: "No ViewModel Type"
+    regex: "(^|[^A-Za-z0-9_])ViewModel($|[^A-Za-z0-9_])"
+    match_kinds:
+      - identifier
+    message: "ViewModelを定義しないでください。具体的な名前をつけてください。"
+    severity: error
+  no_header_comment:
+    included: ".*.swift"
+    name: "No Header Comment"
+    regex: '//\n//  .*\.swift\n//  .*\n//\n//  Created by .* on \d{4}/\d{2}/\d{2}\.\n//'
+    message: "Remove the header comment."
+    severity: error
+  no_wrap_preview:
+    included: ".*.swift"
+    name: "No wrap preview"
+    regex: "^struct [^ ]+: PreviewProvider \\{$"
+    message: "#if DEBUG で囲んでください"
+    severity: error
+  no_wrap_preview2:
+    included: ".*.swift"
+    name: "No wrap preview"
+    regex: "^#Preview \\{$"
+    message: "#if DEBUG で囲んでください"
+    severity: error

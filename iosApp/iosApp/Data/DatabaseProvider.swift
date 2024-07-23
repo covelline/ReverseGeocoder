@@ -5,9 +5,9 @@ import GsiFeatureDB
 struct DatabaseProvider {
     static let shared: DatabaseProvider = .init()
     private init() {}
-    
-    private var cachedDatabase: GsiFeatureDatabase? = nil
-    
+
+    private var cachedDatabase: GsiFeatureDatabase?
+
     var database: GsiFeatureDatabase {
         mutating get async throws {
             if let cached = cachedDatabase {
@@ -35,5 +35,4 @@ struct DatabaseProvider {
             return database
         }
     }
-    
 }

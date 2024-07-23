@@ -10,9 +10,9 @@ struct LocationData: Codable {
 
 extension LocationData {
     static let defaultValue: LocationData = .init(location: .none, administrativeArea: .none, jarlCityWardCountyCode: .none, timestamp: nil)
-    
-    static let placeholder: LocationData = .init(location: .fetched(latitude: 35.680882
-                                                                           , longitude: 139.767408, altitude: 0.0), administrativeArea: .fetched(prefecture: "東京都", subPrefecture: nil, county: nil, city: nil, ward: "千代田区", code: ""), jarlCityWardCountyCode: .fetched(code: "100101", codeType: .jcc))
+
+    static let placeholder: LocationData = .init(location: .fetched(latitude: 35.680882,
+                                                                    longitude: 139.767408, altitude: 0.0), administrativeArea: .fetched(prefecture: "東京都", subPrefecture: nil, county: nil, city: nil, ward: "千代田区", code: ""), jarlCityWardCountyCode: .fetched(code: "100101", codeType: .jcc))
 }
 
 enum Location: Codable {
@@ -39,13 +39,12 @@ enum FoundJarlCityWardCountyCode: Codable {
 }
 
 extension FoundJarlCityWardCountyCode.CodeType {
-    
     static func findCode(jcc: String?, jcg: String?, ku: String?) -> (code: String, codeType: FoundJarlCityWardCountyCode.CodeType)? {
-        if let jcc = jcc {
+        if let jcc {
             return (jcc, .jcc)
-        } else if let jcg = jcg {
+        } else if let jcg {
             return (jcg, .jcg)
-        } else if let ku = ku {
+        } else if let ku {
             return (ku, .ku)
         }
         return nil

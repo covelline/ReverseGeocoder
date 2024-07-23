@@ -1,0 +1,4 @@
+--selfrequired debug,info,warning,error
+--enumNamespaces structs-only
+--exclude vendor/,Packages/**/Tests/**/*.generated.swift
+--disable preferForLoop

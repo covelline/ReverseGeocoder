@@ -1,9 +1,9 @@
-import WidgetKit
 import SwiftUI
+import WidgetKit
 
 struct CurrentLocationListWidget: Widget {
     let kind: String = "CurrentLocationListWidget"
-    
+
     var body: some WidgetConfiguration {
         StaticConfiguration(
             kind: kind,
@@ -20,33 +20,32 @@ struct CurrentLocationEntry: TimelineEntry {
     let locationData: LocationData
 }
 
-
-fileprivate struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> CurrentLocationEntry {
-        return .init(
+private struct Provider: TimelineProvider {
+    func placeholder(in _: Context) -> CurrentLocationEntry {
+        .init(
             date: .now,
-            locationData: .placeholder)
+            locationData: .placeholder
+        )
     }
-    
-    
-    func getTimeline(in context: Context, completion: @escaping (Timeline<CurrentLocationEntry>) -> Void) {
+
+    func getTimeline(in _: Context, completion: @escaping (Timeline<CurrentLocationEntry>) -> Void) {
         Task {
             let locationData = try await LocationDataStore.shared.load()
             let entry = CurrentLocationEntry(
                 date: locationData.timestamp ?? .now,
                 locationData: locationData
             )
-            
+
             let nextUpdate = Calendar
                 .current
                 .date(byAdding: .minute, value: 15, to: entry.date)!
-            
+
             let timeLine = Timeline(entries: [entry], policy: .after(nextUpdate))
             completion(timeLine)
         }
     }
-    
-    func getSnapshot(in context: Context, completion: @escaping (Entry) -> Void) {
+
+    func getSnapshot(in _: Context, completion: @escaping (Entry) -> Void) {
         let entry = CurrentLocationEntry(date: .now, locationData: .placeholder)
         completion(entry)
     }
@@ -54,14 +53,14 @@ fileprivate struct Provider: TimelineProvider {
 
 struct CurrentLocationListWidgetEntryView: View {
     fileprivate var entry: Provider.Entry
-    
+
     var body: some View {
         let locationData = entry.locationData
         VStack {
             VStack(alignment: .leading) {
                 Spacer()
                 switch locationData.jarlCityWardCountyCode {
-                case .fetched(let code, let codeType):
+                case let .fetched(code, codeType):
                     let codeTypeName = switch codeType {
                     case .jcc, .ku:
                         "JCC"
@@ -73,16 +72,16 @@ struct CurrentLocationListWidgetEntryView: View {
                     Spacer(minLength: 0)
                 }
                 switch locationData.administrativeArea {
-                case .fetched(let prefecture, let subPrefecture, let county, let city, let ward, _):
+                case let .fetched(prefecture, subPrefecture, county, city, ward, _):
                     let myCity = [
                         prefecture,
                         subPrefecture,
                         county,
                         city,
-                        ward
+                        ward,
                     ]
-                        .compactMap { $0 }
-                        .joined()
+                    .compactMap { $0 }
+                    .joined()
                     Text(myCity)
                 default:
                     Spacer(minLength: 0)
